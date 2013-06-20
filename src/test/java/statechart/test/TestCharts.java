@@ -19,16 +19,16 @@
  */
 package statechart.test;
 
-import statechart.ConcurrentState;
-import statechart.FinalState;
-import statechart.HierarchicalState;
-import statechart.InternalTransition;
-import statechart.PseudoState;
-import statechart.State;
-import statechart.Statechart;
-import statechart.StatechartException;
-import statechart.TimeoutEvent;
-import statechart.Transition;
+import com.github.klangfarbe.statechart.ConcurrentState;
+import com.github.klangfarbe.statechart.FinalState;
+import com.github.klangfarbe.statechart.HierarchicalState;
+import com.github.klangfarbe.statechart.InternalTransition;
+import com.github.klangfarbe.statechart.PseudoState;
+import com.github.klangfarbe.statechart.State;
+import com.github.klangfarbe.statechart.Statechart;
+import com.github.klangfarbe.statechart.StatechartException;
+import com.github.klangfarbe.statechart.TimeoutEvent;
+import com.github.klangfarbe.statechart.Transition;
 
 public class TestCharts {
   static Statechart t1() throws StatechartException {

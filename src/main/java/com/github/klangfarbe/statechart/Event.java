@@ -17,62 +17,61 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
  */
-package statechart;
+package com.github.klangfarbe.statechart;
 
 /**
- * Describes a transition which does not change the state when triggered,
- * but only executes the associated action. This kind of transition must
- * have an event as its trigger. In contrast to the normal transition 
- * the states entry and exit actions are not triggered.
+ * Interface for an event for the statechart.
  */
-public class InternalTransition extends Transition {
+public abstract class Event {
+  //============================================================================
+  // ATTRIBUTES
+  //============================================================================
+  /**
+   * The ID of the event
+   */
+  String id = new String();
+  
   //============================================================================
   // METHODS
   //============================================================================
-  public InternalTransition(State state, Event event, Action action) {
-    super(state, state, event, action);
-    deactivate.clear();
-    activate.clear();
-  }
-  
-  //============================================================================
-
-  public InternalTransition(State state, Event event, Guard guard, Action action) {
-    super(state, state, event, guard, action);
-    deactivate.clear();
-    activate.clear();
-  }
+  /**
+   * Creates an event
+   */
+  public Event() {
+  };
 
   //============================================================================
-  
-  @Override
-  boolean execute(Event event, Metadata data, Parameter parameter) {
-    // check if the event can be handled
-    if (this.event != null && !this.event.equals(event, data, parameter)) {
-      return false;
-    }
 
-    if (this.event != null && event == null) {
-      return false;
-    }
+  /**
+   * Creates an event with a given id 
+   * @param id
+   */
+  public Event(String id) {
+    this.id = id;
+  };
 
-    if (!allowed(data, parameter)) {
-      return false;
-    }
-
-    if (action != null) {
-      action.execute(data, parameter);
-    }
-    return true;
-  }
-  
   //============================================================================
-  
-  @Override
-  boolean allowed(Metadata data, Parameter parameter) {
-    if (guard != null && !guard.check(data, parameter)) {
-      return false;
-    }
-    return true;
+
+  /**
+   * Called by the transition to check if it should handle this event.
+   * 
+   * @param event
+   *          the event to compare
+   * @param data
+   *          The runtime data object
+   * @param param
+   *          The parameter for this action
+   */
+  public boolean equals(Event event, Metadata data, Parameter param) {
+    return event != null ? id.compareTo(event.toString()) == 0 : false;
+  };
+
+  //============================================================================
+
+  /**
+   * Returns the id
+   */
+  public String toString() {
+    return id;
   }
 }

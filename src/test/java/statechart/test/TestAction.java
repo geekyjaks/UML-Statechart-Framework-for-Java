@@ -19,9 +19,9 @@
  */
 package statechart.test;
 
-import statechart.Action;
-import statechart.Metadata;
-import statechart.Parameter;
+import com.github.klangfarbe.statechart.Action;
+import com.github.klangfarbe.statechart.Metadata;
+import com.github.klangfarbe.statechart.Parameter;
 
 public class TestAction implements Action {
   public TestAction(String name, String action) {

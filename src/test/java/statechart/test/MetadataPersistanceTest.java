@@ -21,10 +21,10 @@ package statechart.test;
 
 import org.junit.Assert;
 import org.junit.Test;
-import statechart.Metadata;
-import statechart.State;
-import statechart.Statechart;
-import statechart.StatechartException;
+import com.github.klangfarbe.statechart.Metadata;
+import com.github.klangfarbe.statechart.State;
+import com.github.klangfarbe.statechart.Statechart;
+import com.github.klangfarbe.statechart.StatechartException;
 
 public class MetadataPersistanceTest {
 

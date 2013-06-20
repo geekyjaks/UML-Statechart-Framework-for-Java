@@ -19,7 +19,7 @@
  */
 package statechart.test;
 
-import statechart.Parameter;
+import com.github.klangfarbe.statechart.Parameter;
 
 public class TestParameter extends Parameter {
     String path = new String();

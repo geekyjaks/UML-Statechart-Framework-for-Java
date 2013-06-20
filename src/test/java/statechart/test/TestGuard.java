@@ -19,9 +19,9 @@
  */
 package statechart.test;
 
-import statechart.Guard;
-import statechart.Metadata;
-import statechart.Parameter;
+import com.github.klangfarbe.statechart.Guard;
+import com.github.klangfarbe.statechart.Metadata;
+import com.github.klangfarbe.statechart.Parameter;
 
 public class TestGuard implements Guard {
   TestGuard(int i) {

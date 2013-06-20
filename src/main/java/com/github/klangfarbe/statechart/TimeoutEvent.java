@@ -17,40 +17,67 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
  */
-package statechart;
+package com.github.klangfarbe.statechart;
+
+import java.util.UUID;
 
 /**
- * This class describes some common exception which can occur when working
- * with the statechart.
+ * Timeout event for a transition
  */
-public class StatechartException extends Exception {
+public class TimeoutEvent extends Event {
   //============================================================================
   // ATTRIBUTES
   //============================================================================
-  private static final long serialVersionUID = 1L;
-
+  /**
+   * The timeout value in milliseconds
+   */
+  private long timeout;
+  private UUID uuid = UUID.randomUUID();
+  
   //============================================================================
   // METHODS
   //============================================================================
-  public StatechartException() {
-    super();
+  /**
+   * Creates a timeout event.
+   * @param timeout The timeout value in milliseconds
+   */
+  public TimeoutEvent(long timeout) {
+    super("TimeoutEvent");
+    this.timeout = timeout;
+  }
+
+  //============================================================================
+
+  /**
+   * Checks if the timevalue in the given parameter is larger than the one
+   * stored in this event.
+   *
+   * @param event the event to compare
+   * @param data The runtime data object
+   * @param param The parameter for this event. Must be a TimeoutParameter type.
+   */
+  public boolean equals(Event event, Metadata data, Parameter param) {
+    if(event instanceof TimeoutEvent && ((TimeoutEvent)event).uuid == this.uuid) {
+      return true;
+    }
+    return false;
+  }
+
+  //============================================================================
+
+  /**
+   * Gets the timeout of the event.
+   */
+  public long getTimout() {
+    return timeout;
   }
   
   //============================================================================
 
-  public StatechartException(String reason) {
-    super(reason);
-  }
-
-  //============================================================================
-
-  public StatechartException(String reason, Throwable cause) {
-    super(reason, cause);
-  }
-
-  //============================================================================
-
-  public StatechartException(Throwable cause) {
-    super(cause);
+  /**
+   * Sets the current timeout
+   */
+  public void setTimeout(long timeout) {
+    this.timeout = timeout;
   }
 }
