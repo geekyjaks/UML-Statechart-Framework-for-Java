@@ -1,3 +1,12 @@
 Fork of https://github.com/klangfarbe/UML-Statechart-Framework-for-Java
 
 Added maven support to the above code.
+
+To use, add the following dependency in your pom,
+
+<dependency>
+  <groupId>com.github.klangfarbe</groupId>
+  <artifactId>statechart</artifactId>
+  <version>1.0</version>
+</dependency>
+ 
